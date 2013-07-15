@@ -185,6 +185,7 @@ abstract class RedisCluster(hosts: ClusterNode*) extends RedisCommand {
    * StringOperations
    */
   override def set(key: Any, value: Any)(implicit format: Format) = processForKey(key)(_.set(key, value))
+  override def set(key: Any, nxxx: Any, value: Any, expx: Any, time: Long) = processForKey(key)(_.set(key, value, nxxx, expx, time))
   override def get[A](key: Any)(implicit format: Format, parse: Parse[A]) = processForKey(key)(_.get(key))
   override def getset[A](key: Any, value: Any)(implicit format: Format, parse: Parse[A]) = processForKey(key)(_.getset(key, value))
   override def setnx(key: Any, value: Any)(implicit format: Format) = processForKey(key)(_.setnx(key, value))
